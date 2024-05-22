@@ -1,0 +1,44 @@
+name: Generate Maps
+
+on:
+  schedule:
+    - cron:  '0 0 * * 0'
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Get current date
+        id: get_date
+        run: |
+          echo "CURRENT_DATE=$(date -u +'%Y-%m-%d')" >> $GITHUB_ENV
+
+      - name: Generate ADV_EXT
+        run: |
+          mkdir -p generated_maps
+          echo "## ADV_EXT" >> message.txt
+          bash run_extreme.sh >> message.txt
+          mv generated_maps adv_extreme-${CURRENT_DATE}
+          tar -czf adv_extreme-${CURRENT_DATE}.tar.gz adv_extreme-${CURRENT_DATE}
+
+      - name: Generate OBS_STUPID
+        run: |
+          mkdir -p generated_maps
+          echo "## OBS_STUPID" >> message.txt
+          bash run_stupid.sh >> message.txt
+          mv generated_maps obs_stupid-${CURRENT_DATE}
+          tar -czf obs_stupid-${CURRENT_DATE}.tar.gz obs_stupid-${CURRENT_DATE}
+
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: ${{ env.CURRENT_DATE }}
+          tag_name: ${{ env.CURRENT_DATE }}
+          body_path: message.txt
+          files: |
+            adv_extreme-${{ env.CURRENT_DATE }}.tar.gz
+            obs_stupid-${{ env.CURRENT_DATE }}.tar.gz
