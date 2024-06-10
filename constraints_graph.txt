@@ -1859,7 +1859,7 @@ ITM & (
     ))
     | WHIRL_BONK_CANCEL
     | (ADV_VHARD & RABI_SLIPPERS & HAMMER_ROLL & AIR_DASH) // roll bonk, air dash, wall jump, wall kick
-    | (OBS_EXT & RABI_SLIPPERS & SLIDING_POWDER & (PIKO_HAMMER | CARROT_BOMB) & (
+    | (OBS_STUPID & RABI_SLIPPERS & SLIDING_POWDER & (PIKO_HAMMER | CARROT_BOMB) & (
         WALL_JUMP // vertical slide bonk a falling uprprc, wall launch
         | (STUPID & BORING) // vertical slide bonk a fairy, wall jump, damage boost, wall kick
     ))
