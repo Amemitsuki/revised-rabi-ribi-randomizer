@@ -896,6 +896,12 @@
 "entry_prereq": "
     AIR_JUMP
     | (OBS_VHARD & RABI_SLIPPERS & SLIDE_JUMP_BUNSTRIKE_CANCEL) // need turn-off hammer roll v1.08
+    // whirlbonk fairy, amulet cancel, airdash, wall kick, amulet
+    | (OBS_STUPID & AIR_DASH & 2_AMULET_FOOD & BUNNY_AMULET & (
+        HAMMER_ROLL
+        | (SLIDE_JUMP_BUNSTRIKE & WHIRL_BONK)
+        | (SLIDING_POWDER & RABI_SLIPPERS & WHIRL_BONK & WALL_JUMP & 3_AMULET_FOOD & BUNNY_AMULET_LV2)
+    ))
     | (WALL_JUMP_LV2 & (
         WHIRL_BONK
         | (AIR_DASH & HARD)
