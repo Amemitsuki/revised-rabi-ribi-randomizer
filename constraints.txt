@@ -106,10 +106,12 @@
 "exit_prereq": "
     RABI_SLIPPERS | AIR_JUMP | WALL_JUMP
     | (ITM_HARD & (AIR_DASH | SLIDING_POWDER))
-    // quick drop jump, wall jump, wall kick
-    | (ADV_EXT & SPEED3)
-    // quick drop, amulet gliding, wimpy, bounce
-    | (ADV_STUPID & BUNNY_AMULET)
+    | (ADV_EXT & (
+        // quick drop jump, (amulet), wall jump, wall kick
+        // quick drop, amulet gliding, wimpy, bounce (stupid method)
+        SPEED3
+        | (BUNNY_AMULET & (SPEED1 | STUPID))
+    ))
 ",
 }
 
@@ -489,7 +491,10 @@
 {
 "item": "TOP_FORM",
 "from_location": "SKY_ISLAND_UPPER",
-"entry_prereq": "5TILE_WALL_CLIMB | SLIDE_JUMP_BUNSTRIKE",
+"entry_prereq": "
+    5TILE_WALL_CLIMB | SLIDE_JUMP_BUNSTRIKE
+    | (ADV_EXT & RABI_SLIPPERS & SLIDING_POWDER)
+",
 "exit_prereq": "NONE",
 }
 
@@ -750,7 +755,7 @@
 {
 "item": "HP_UP_SOUTH_RAVINE",
 "from_location": "RAVINE_LOWER",
-"entry_prereq": "EXPLOSIVES_ENEMY & (SLIDING_POWDER | HAMMER_ROLL_ZIP)",
+"entry_prereq": "EXPLOSIVES_ENEMY & (SLIDING_POWDER | HAMMER_ROLL_ZIP | (ROLL_BONK_ZIP & BORING))",
 "exit_prereq": "(SLIDING_POWDER | HAMMER_ROLL_ZIP)",
 }
 
