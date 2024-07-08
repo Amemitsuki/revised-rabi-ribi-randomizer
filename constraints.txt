@@ -1229,7 +1229,7 @@
 {
 "item": "HP_UP_LAB_PIT",
 "from_location": "LAB_MID",
-"entry_prereq": "CARROT_BOMB",
+"entry_prereq": "CARROT_BOMB | (OBS_VHARD & PIKO_HAMMER & CARROT_SHOOTER)",
 "exit_prereq": "NONE",
 }
 
